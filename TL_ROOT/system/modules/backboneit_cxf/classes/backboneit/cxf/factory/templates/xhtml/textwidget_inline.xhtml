@@ -1,0 +1,7 @@
+<label for="<?php echo $this->id; ?>"><?php
+if($this->mandatory): ?><span class="invisible"><?php echo _('Mandatory field'); ?></span> <?php endif; 
+echo $this->label;
+if($this->mandatory): ?><span class="mandatory">*</span><?php endif;
+?></label>
+<input type="text" id="<?php echo $this->id; ?>" class="text<?php if($this->mandatory) echo ' mandatory'; ?>" maxlength="<?php echo $this->maxlength; ?>" value="<?php echo $this->value; ?>" name="<?php echo $this->name; ?>" />
+<?php echo $this->label; ?>

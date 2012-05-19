@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cxf:form>
+
+  <cxf:palette>
+    <cxf:widget ref="gen:text"></cxf:widget>
+  </cxf:palette>
+
+</cxf:form>

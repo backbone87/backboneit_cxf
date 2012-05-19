@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed
+  xmlns="http://www.w3.org/2005/Atom"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:pd="http://www.contao.org/xml/ns/package-descriptor"
+  xmlns:gd="http://schemas.google.com/g/2005"
+  xml:base="http://www.contao-repo.org/context/path/"
+  xml:lang="de">
+  <!-- der media namespace ermöglicht das einbetten von beliebigen media typen,
+    die von vielen newsreadern verstanden werden (mrss von yahoo) -->
+  <!-- der pd namespace hält ER3 spezifische tags und attribute, die zum
+    beispiel compats und version definieren -->
+  <!-- der gd namespace enthält nützliche sachen, ich weiß jedoch nicht
+    ob es erwünschte praxis ist, diesen namespace in nicht von google
+    produzierten dokumenten zu verwenden. da müsste man nochmal nachhaken,
+    ich hab da nix gefunden -->
+  <!-- xml:base setzt den basis pfad für relative links (weniger
+    schreibarbeit) -->
+  
+  <id>http://www.contao-repo.org/context/path/list?category=example</id><!-- feed id -->
+  
+  <title>Beispielliste von Erweiterungen</title>
+  
+  <updated>2011-09-13T01:34:00+02:00</updated><!-- feed geändert -->
+  
+  <!-- repository logo und icon -->
+  <logo>/static/logo.png</logo>
+  <icon>/static/icon.png</icon>
+  
+  <!-- link zu diesem feed, ist empfohlen -->
+  <link rel="self" href="/list?category=example" />
+  
+  <!-- verfügbare andere sprachen dieses feeds -->
+  <link rel="alternate" hreflang="en" href="/list?category=example&amp;lang=en" />
+  <link rel="alternate" hreflang="de" href="/list?category=example&amp;lang=de" />
+  <link rel="alternate" hreflang="fr" href="/list?category=example&amp;lang=fr" />
+  
+  <!-- das repository dessen pakete hier beschrieben werden
+    (ist gleich xml:base) -->
+  <link rel="http://www.contao.org/xml/atom/link/rel/repository" href="/" />
+  
+  <entry><!-- ein atom entry beschreibt ein paket im -->
+
+    <!-- eindeutige id, kann zum beispiel der DL URL dieser erweiterung sein. -->
+    <id>http://www.contao-repo.org/context/path/repo/example-extension/1.2.3</id>
+    
+	<title>Beispiel Extension 1.2.3</title>
+  
+    <!-- jede person (author/contributor) kann beliebig viele rollen einnehmen.
+      wenn creator nicht vorhanden, dann wird diese automatisch beim uploader
+      des ersten pakets dieser erweiterung gesetzt.
+      wenn distributor nicht vorhanden, dann wird diese automatisch auf den
+      uploader des pakets, das von diesem entry beschrieben wird, gesetzt
+      jeder author erhält automatisch die rolle developer. -->
+    <author pd:roles="creator developer distributor">
+      <name>Oliver Hoff</name>
+      <email>oliver@hofff.com</email>
+      <uri>http://www.hofff.com/</uri>
+      
+      <!-- username der person in diesem repository -->
+      <pd:username>backbone</pd:username>
+      
+      <!-- pfad zu der liste aller extension dieses users -->
+      <pd:extensions href="/list?user=backbone&amp;role=creator" />
+      
+    </author>
+    <author pd:roles="developer"><name>Tristan Lins</name></author>
+    <contributor pd:roles="translator tester"><name>Yanick Witschi</name></contributor>
+    <contributor pd:roles="tester"><name>Christian Schiffler</name></contributor>
+    <contributor pd:roles="adviser"><name>Andreas Schempp</name></contributor>
+
+    <rights>backboneIT 2011 - Lizensiert unter LGPLv3</rights>
+
+    <published>2011-09-12T00:59:00+02:00</published><!-- erste veröffentlichung -->
+	<updated>2011-09-12T01:42:00+02:00</updated><!-- keywords oder ähnliches geändert -->
+    
+    <!-- hier ließe sich drüber streiten, ob content die beschreibung des pakets
+      oder das paket selbst bestimmt -->
+    <content type="application/x-contao-extension" src="/repo/example-extension/1.2.3" />
+    
+    <summary>Dies ist die Beschreibung der Beispiel-Erweiterung. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis, nisi molestie vulputate imperdiet, ipsum massa consectetur nibh, id suscipit nibh libero eu augue. Etiam hendrerit interdum arcu et tristique. Curabitur turpis felis, vehicula sed condimentum nec, vestibulum sed odio. Cras eget est at purus egestas convallis quis non purus.</summary>
+    
+    <!-- link zu diesem entry (paket-beschreibung), ist empfohlen -->
+    <link rel="self" href="/package/example-extension/1.2.3?lang=de" />
+    
+    <!-- verfügbare andere sprachen dieses entry (paket-beschreibung) -->
+    <link rel="alternate" hreflang="en" href="/package/example-extension/1.2.3?lang=en" />
+    <link rel="alternate" hreflang="de" href="/package/example-extension/1.2.3?lang=de" />
+    <link rel="alternate" hreflang="fr" href="/package/example-extension/1.2.3?lang=fr" />
+    
+    <!-- das repository zu dem dieser entry (paket) gehört (ist gleich xml:base) -->
+    <link rel="http://www.contao.org/xml/atom/link/rel/repository" href="/" />
+  
+    <!-- keywords/categorien. scheme ist optional und gibt den kontext des keywords wider
+      bin mir jetzt grad unsicher ob jeder repo seinen eigenen category context aufspannt
+      oder ob ein allgemeiner contao context genommen wird -->
+    <category term="Beispiel" scheme="http://www.contao.org/xml/atom/category/scheme/category" />
+    <category term="Beispiel" scheme="http://www.contao.org/xml/atom/category/scheme/keyword" />
+    <category term="Hilfe" scheme="http://www.contao.org/xml/atom/category/scheme/keyword" />
+    
+    <media:content url="http://www.hofff.com/contao/extension/example.jpeg" type="image/jpeg" />
+    <media:group>
+      <media:content url="http://www.hofff.com/contao/extension/be.jpeg" type="image/jpeg" medium="image" />
+      <media:content url="http://www.hofff.com/contao/extension/be-hd.jpeg" type="image/jpeg" medium="image" width="1960" height="1060" />
+      <media:description type="plain">Backend-Ansicht dieser tollen Erweiterung</media:description>
+      <media:title type="plain">BE-Ansicht</media:title>
+      <!-- mrss definiert noch ziemlich viele andere tags, alle sind optional (auch title und description) -->
+    </media:group>
+    <!-- <media:group> -->
+      <!-- hier könnte ein youtube video direkt von der yt data api integriert werden -->
+    <!-- </media:group> -->
+    
+    <pd:installer class="\some\php\namespace\ExampleInstaller" />
+    
+    <pd:relation type="dependency" level="requirement">
+      <pd:contao>
+        <pd:lowerBound version="3.1" bound="inclusive" /><!-- bound="inclusive" ist impliziert für lowerBound -->
+      </pd:contao>
+      <!-- ist es wirklich nötig bound="inclusive|exclusive" einstellen zu können?
+        die implizierten werte sind doch der einzige anwendungsfall?
+        dann könnte man die syntax vereinfachen -->
+      <!-- <pd:contao lowerBound="3.1" /> -->
+    </pd:relation>
+    <pd:relation type="dependency" level="requirement">
+      <pd:php name="soap" />
+      <pd:extension name="nusoap" repository="http://www.my-private-repo.de/" />
+    </pd:relation>
+    <pd:relation type="dependency" level="requirement">
+      <pd:pear name="Mail" version="1.2" />
+    </pd:relation>
+    <pd:relation type="dependency" level="requirement">
+      <pd:db name="mysql"></pd:db>
+    </pd:relation>
+    
+    <pd:relation type="conflict">
+      <pd:dbDriver name="mysql" /><!-- we do not support mysql driver (we need mysqli) -->
+    </pd:relation>
+    <pd:relation type="conflict">
+      <pd:db name="mysql" version="4" />
+    </pd:relation>
+    <pd:relation type="conflict">
+      <pd:db name="mysql">
+        <pd:lowerBound version="5" />
+        <pd:upperBound version="5.1" bound="exclusive" /><!-- bound="exclusive" ist impliziert für upperBound -->  
+      </pd:db>
+    </pd:relation>
+    
+    <pd:relation type="dependency" level="optional">
+      <pd:extension name="other-extension" version="1.5">
+        <pd:description>Diese Erweiterung bietet zusätzlich das HelloWorld Feature für die Beispiel Erweiterung.</pd:description>
+      </pd:extension>
+    </pd:relation>
+    <pd:relation type="dependency" level="optional">
+      <pd:extension name="third-extension" version="*" /><!-- version="*" ist impliziert -->
+    </pd:relation>
+    
+    <pd:upgrade version="1.0" userdata="lossless" check="unnecessary" />
+    <pd:upgrade version="0" userdata="partial" check="required">
+      <pd:description>Ein Update von der Entwicklungsversion ist nicht wirklich unterstützt. Überprüfen Sie unbedingt alle Inhalte die mit dieser Erweiterung erzeugt wurden.</pd:description>
+    </pd:upgrade>
+    
+    <pd:downgrade version="1.2" userdata="lossless" check="unnecessary" />
+    <pd:downgrade version="1.1" userdata="dropUnused" check="recommended" />
+    <pd:downgrade version="1.0" userdata="partial" check="required" />
+    
+    <pd:statistics downloads="3141" versionDownloads="42" /><!-- installs/updates wird mit downloads zusammengefasst -->
+    
+    <!-- etwas nützliches aus dem google data schema -->
+    <gd:comments>
+      <gd:feedLink href="http://www.contao-community.de/some-thread/feed.xml" countHint="138" />
+    </gd:comments>
+    
+    <!-- und noch was tolles aus dem google data schema -->
+    <gd:rating average="4.9264708" max="5" min="1" numRaters="272" rel="http://schemas.google.com/g/2005#overall" />
+     
+  </entry>
+  
+</feed>

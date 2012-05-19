@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cxf:form
+  xmlns:cxf="http://www.backboneit.de/contao/backboneit_cxf/Form"
+  xmlns:tl_page="http://www.contao.org/tl_page"
+  targetNamespace="http://www.contao.org/tl_page">
+  
+  <cxf:import location="somewhere/over/the/rainbow.xml" />
+  
+  <cxf:palette>
+    
+    <div>IRGENDWELCHER TEXT</div>
+    
+    <cxf:fieldset>
+      <cxf:widget name="lastname" class="CXFTextWidget">
+        <cxf:label><cxf:translate token="lastname/label" /></cxf:label>
+        <cxf:description><cxf:translate token="lastname/description" /></cxf:description>
+        
+        <cxf:validator class="CXFLengthValidator">
+          <cxf:param name="length">10</cxf:param>
+          <cxf:message><cxf:translate token="lastname/validation/length" /></cxf:message>
+          <cxf:validationLevel>ERROR</cxf:validationLevel>
+        </cxf:validator>
+        
+        <cxf:transformator name="" class="UCFirstTransformator"
+            before="otherTransformator"
+            after="anotherTransformator">
+            
+        </cxf:transformator>
+        
+        <cxf:options>
+          <optgroup label="IRGENDWAS">
+            <option value="something"><cxf:translate token="lastname/options/something" /></option>
+          </optgroup>
+        </cxf:options>
+        
+      </cxf:widget>
+    </cxf:fieldset>
+    
+  </cxf:palette>
+  
+</cxf:form>
